@@ -1,0 +1,7 @@
+<p>dashboard works!</p>
+<app-filter [filterFormArray]="filterFormArray" (onSubmit)="onSubmit($event)"></app-filter>
+
+<hr>
+
+<app-table [colHeading]="tableTranslatorData.colHeading" [tableData]="tableTranslatorData.tableData" [option]="tableTranslatorData.option" (actionTriggered)="actionTriggered($event)"></app-table>
+<app-pagination [options]="paginationConfig" (pageChangeListener)="pageChangeListener($event)" ></app-pagination>

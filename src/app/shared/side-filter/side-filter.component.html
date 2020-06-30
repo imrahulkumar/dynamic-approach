@@ -1,0 +1,35 @@
+<div class="col-fil">
+  <div class="filter_checkbox" *ngFor="let filter of filterList; let i = index;">
+    <div class="checkbox_wrap">
+      <h4>{{filter.name}}</h4>
+      <ul [formGroup]="filterForm">
+        <ng-container *ngIf="filter.type == 'radio'">
+          <div formArrayName="period" *ngFor="let item of radioControl; let i = index;">
+            <div [formGroupName]="i">
+              <li *ngFor="let d of filter.value">
+                <input type="radio" [id]="d.name" [value]="d.value" [name]="filter.name"
+                  [formControlName]="filter.name">
+                <label for="{{d.value}}{{i}}">{{d.name}}</label>
+              </li>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="filter.type == 'date'">
+          <div class="row">
+            <div class="col-4" *ngFor="let d of filter.value; let i = index">
+              <input autocomplete="off" class="form-control" placeholder="YYYY-MM-DD" ngbDatepicker #f="ngbDatepicker"
+                (click)="f.toggle()" [formControlName]="d.name" [name]="d.name">
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="filter.type == 'checkbox'">
+            <li *ngFor="let d of filter.value">
+                <input type="checkbox" [id]="d.name" [value]="d.value" [name]="filter.name"
+                  [formControlName]="d.name">
+                <label for="{{d.value}}{{i}}">{{d.name}}</label>
+              </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

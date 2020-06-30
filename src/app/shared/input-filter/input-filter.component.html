@@ -1,0 +1,17 @@
+<div *ngIf="inputType=='input'" [formGroup]="controls">
+  <input [formControlName]="option.formControlName" [name]="option.name" type="text" class="form-control" />
+</div>
+
+<div *ngIf="inputType=='date'" [formGroup]="controls">
+  <input autocomplete="off" class="form-control" placeholder="YYYY-MM-DD" 
+  ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" 
+  [formControlName]="option.formControlName" [name]="option.name" >
+</div>
+
+
+<div *ngIf="inputType=='button'">
+  <button [name]="option.name">{{option.name}}</button>
+</div>
+
+
+

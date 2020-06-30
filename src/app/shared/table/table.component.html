@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let colName of colHeading">{{colName}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rowData of tableData">
+      <td *ngFor="let opt of option">
+        <ng-container *ngIf="opt.key != 'key'">
+          {{rowData[opt.key]}}
+        </ng-container>
+        <ng-container *ngIf="opt.key == 'action'">
+          <ng-container *ngFor="let d of opt.config">
+            <button *ngIf="d.input == 'button'" type="button" (click)="actionListener(d,rowData)" class="btn btn-primary"><i
+                ngClass="{{d.icon}}"></i></button>
+
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,9 @@
+<div class="container">
+  <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit(filterForm)">
+    <div class="row" >
+      <div class="col-4" *ngFor="let item of filterFormArray">
+        <app-input-filter  [controls]="filterForm" [inputType]="item.inputType"  [option]="item.option"></app-input-filter>
+      </div>
+    </div>
+  </form>
+</div>
